@@ -1,0 +1,8 @@
+<img src=<%= @user.image %> class = "icon_image">
+<h2><%= @user.name %></h2>
+<p><%= simple_format @user.body %></p>
+<p>ユーザ詳細</p>
+
+<% if current_user.id == @user.id %>
+	<%= link_to "Edit", edit_user_registration_path %>
+<% end %>

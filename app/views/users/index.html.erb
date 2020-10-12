@@ -1,0 +1,18 @@
+<table class="table">
+	<tr>
+		<th>プロフィール画像</th>
+		<th>名前</th>
+	</tr>
+
+	<% @users.each do |user| %>
+	<tr>
+		<td>
+			<img src=<%= user.image %> class = "index_icon_image">
+		</td>
+		<td>
+			<%=link_to (user.name), user_path(user.id) %>
+		</td>
+	<tr>
+	<% end %>
+
+</table>
