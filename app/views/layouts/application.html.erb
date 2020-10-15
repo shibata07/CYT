@@ -16,7 +16,7 @@
         <header>
           <div class="header_contents">
             <%= link_to "マイページ", user_path(current_user.id), class: "item" %>
-            <div class="item">記事一覧</div>
+            <%= link_to "投稿一覧", trainings_path, class: "item" %>
             <div class="item">体重管理</div>
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "item" %>
           </div>
@@ -32,7 +32,7 @@
       <% end %>
 
       <!-- 新規登録、ログイン時のメッセージ -->
-      <p class="notice"><%= notice %></p>
+      <p class="notice"><%= notice%></p>
       <p class="alert"><%= alert %></p>
 
       <%= yield %>

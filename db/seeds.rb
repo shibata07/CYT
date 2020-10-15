@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Muscle.create!(
+	[{name: "肩"},{name: "腕"},{name: "胸"},{name: "背中"},{name: "腹"},{name: "脚"},{name: "その他"}]
+	)
