@@ -1,0 +1,29 @@
+<h1>トレーニング投稿</h1>
+
+<%= form_for @training do |f| %>
+	<table>
+		<thead>
+			<tr>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><%= f.label :name, "メニュー名" %></td>
+				<td><%= f.text_field :name %></td>
+			</tr>
+			<tr>
+				<td><%= f.label :muscle_id, "部位" %></td>
+				<td><%= f.collection_select :muscle_id, Muscle.all, :id, :name, include_blank: "--選択してください--" %></td>
+			</tr>
+			<tr>
+				<td><%= f.label :body, "備考" %></td>
+				<td><%= f.text_area :body %></td>
+			</tr>
+		</tbody>
+
+	</table>
+	<%= f.hidden_field :user_id, :value => current_user.id %>
+	<%= f.submit "登録" %>
+<% end %>
