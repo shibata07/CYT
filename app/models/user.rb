@@ -7,5 +7,6 @@ class User < ApplicationRecord
   #carrierwave設定
   mount_uploader :image, ImageUploader
   
-  has_many :trainings, foreign_key: :user_id
+  has_many :trainings, dependent: :destroy, foreign_key: :user_id
+  has_many :comments, dependent: :destroy
 end
