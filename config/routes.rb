@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   get 'home/about'
   devise_for :users#, controllers: {   registrations: 'users/registrations',sessions: 'users/sessions' }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :users, only: [:show, :index]
+  resources :users, only: [:show, :index] do
+  	resource :relationships, only: [:create, :destroy]
+  	get :follows, on: :member
+    get :followers, on: :member
+  end
   resources :trainings
 end
 

@@ -17,6 +17,7 @@
           <div class="header_contents">
             <%= link_to "マイページ", user_path(current_user.id), class: "item" %>
             <%= link_to "投稿一覧", trainings_path, class: "item" %>
+            <%= link_to "新規投稿", new_training_path, class: "item" %>
             <div class="item">体重管理</div>
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "item" %>
           </div>

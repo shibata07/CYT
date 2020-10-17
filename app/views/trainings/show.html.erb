@@ -1,7 +1,7 @@
 <h1>トレーニング詳細</h1>
 
 <img src=<%= @training.user.image %> class = "icon_image">
-<p><%= @training.user.name %>
+<p><%= link_to user_path(@training.user.id) do %><%= @training.user.name %><% end %>
 <p>種目: <%= @training.name %></p>
 <p>トレーニング部位: <%= @training.muscle.name %></p>
 <p>備考: <%= simple_format @training.body %></p>
