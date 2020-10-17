@@ -1,0 +1,19 @@
+<h3><%= @user.name %>のフォロー中ユーザ</h3>
+<% if @user.followings.count == 0 %>
+	<p>ユーザはいません</p>
+<% else %>
+	<table class="table">
+		<% @user.followings.each do |following| %>
+			<tr>
+				<td><img src=<%= following.image %> class="index_icon_image"></td>
+				<td>
+					<%= link_to user_path(following.id) do %>
+						<%= following.name %>
+					<% end %>
+				</td>
+				<td>フォロー数: <%= following.active_relationships.count %></td>
+				<td>フォロワー数: <%= following.passive_relationships.count %></td>
+			</tr>
+		<% end %>
+	</table>
+<% end %>
