@@ -7,9 +7,11 @@ class User < ApplicationRecord
   #carrierwave設定
   mount_uploader :image, ImageUploader
 
+
   validates :image, presence: true
 
-  has_many :trainings, foreign_key: :user_id
+  has_many :trainings, dependent: :destroy, foreign_key: :user_id
+  has_many :comments, dependent: :destroy
 
   has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id
   has_many :followings, through: :active_relationships, source: :follower
@@ -20,5 +22,6 @@ class User < ApplicationRecord
   def followed_by?(user)
   	passive_relationships.find_by(following_id: user.id).present?
   end
+
 end
 
