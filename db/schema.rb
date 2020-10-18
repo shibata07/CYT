@@ -10,16 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2020_10_15_044132) do
-=======
-ActiveRecord::Schema.define(version: 2020_10_16_070628) do
->>>>>>> develop
+ActiveRecord::Schema.define(version: 2020_10_18_055041) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
     t.integer "user_id"
     t.integer "training_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "food_images", force: :cascade do |t|
+    t.integer "training_id"
+    t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
