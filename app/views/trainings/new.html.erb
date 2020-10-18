@@ -21,6 +21,10 @@
 				<td><%= f.label :body, "備考" %></td>
 				<td><%= f.text_area :body %></td>
 			</tr>
+			<tr>
+				<td></td>
+				<td><%= f.attachment_field :training_images_images, multiple: true %></td>
+			</tr>
 		</tbody>
 
 	</table>

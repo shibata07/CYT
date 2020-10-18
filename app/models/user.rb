@@ -5,10 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   #carrierwave設定
-  mount_uploader :image, ImageUploader
+  mount_uploader :image_id, ImageUploader
 
 
-  validates :image, presence: true
+  validates :image_id, presence: true
 
   has_many :trainings, dependent: :destroy, foreign_key: :user_id
   has_many :comments, dependent: :destroy

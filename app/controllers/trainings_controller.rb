@@ -50,6 +50,6 @@ class TrainingsController < ApplicationController
 
 	private
 		def training_params
-			params.require(:training).permit(:muscle_id, :name, :body, :user_id)
+			params.require(:training).permit(:muscle_id, :name, :body, :user_id, training_images_images: [])
 		end
 end

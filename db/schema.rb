@@ -10,19 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_18_055041) do
+ActiveRecord::Schema.define(version: 2020_10_18_113514) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
     t.integer "user_id"
     t.integer "training_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "food_images", force: :cascade do |t|
-    t.integer "training_id"
-    t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -40,13 +33,19 @@ ActiveRecord::Schema.define(version: 2020_10_18_055041) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "training_images", force: :cascade do |t|
+    t.integer "training_id"
+    t.string "image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "trainings", force: :cascade do |t|
     t.integer "muscle_id"
     t.string "name"
     t.string "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -54,7 +53,7 @@ ActiveRecord::Schema.define(version: 2020_10_18_055041) do
     t.string "encrypted_password", default: "", null: false
     t.string "name"
     t.string "body", default: "よろしくお願いします"
-    t.string "image"
+    t.string "image_id"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
