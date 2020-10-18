@@ -8,13 +8,6 @@ class CommentsController < ApplicationController
     end
   end
 
-  	def edit
-  	@comment = Comment.find_by(id: params[:id])
-  	end
-
-  	def update
-  	end
-
   def destroy
   	@comment = Comment.find(params[:id])
     if @comment.destroy
