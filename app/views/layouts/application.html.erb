@@ -15,6 +15,13 @@
       <% if user_signed_in? %>
         <header>
           <div class="header_contents">
+            <div id="search_form">
+              <%= form_tag(users_search_path,method: :get) do %>
+                <%= text_field_tag :search %>
+                <%= submit_tag 'ユーザ検索' %>
+              <% end %>
+            </div>
+
             <%= link_to "マイページ", user_path(current_user.id), class: "item" %>
             <%= link_to "投稿一覧", trainings_path, class: "item" %>
             <%= link_to "新規投稿", new_training_path, class: "item" %>
