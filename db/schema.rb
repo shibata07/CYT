@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2020_10_18_113514) do
     t.integer "muscle_id"
     t.string "name"
     t.string "body"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,10 +1,18 @@
 <h1>トレーニング詳細</h1>
 
-<img src=<%= @training.user.image %> class = "icon_image">
+<%= image_tag @training.user.image_id.url, class: "icon_image" %>
 <p><%= link_to user_path(@training.user.id) do %><%= @training.user.name %><% end %>
 <p>種目: <%= @training.name %></p>
 <p>トレーニング部位: <%= @training.muscle.name %></p>
 <p>備考: <%= simple_format @training.body %></p>
+
+<% if @training.training_images.present? %>
+	<h3>食事の記録</h3>
+	<% @training.training_images.each do |image| %>
+		<%= attachment_image_tag image, :image, :fill, 160, 160 %>
+	<% end %>
+<% else %>
+<% end %>
 
 <% if @training.user.id == current_user.id %>
 	<%= link_to "編集", edit_training_path(@training.id) %>

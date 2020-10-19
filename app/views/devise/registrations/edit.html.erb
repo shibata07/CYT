@@ -28,7 +28,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :パスワード %> <i>(変更時のみ記入)</i>
+    <%= f.label :新たなパスワード %> <i>(変更時のみ記入)</i>
     <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
       <em><%= @minimum_password_length %> characters minimum</em>
@@ -36,7 +36,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :パスワード確認用 %>
+    <%= f.label :新たなパスワード確認用 %>
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 

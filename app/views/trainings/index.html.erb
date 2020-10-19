@@ -14,7 +14,7 @@
 
 			<tbody>
 				<tr>
-					<td><img src = <%= training.user.image %> class = "icon_training"></td>
+					<td><%= image_tag training.user.image_id.url, class: "icon_training" %></td>
 					<td><%= link_to user_path(training.user) do %>
 							<%= training.user.name %>
 						<% end %>
