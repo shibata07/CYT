@@ -5,7 +5,7 @@
 	<table class="table">
 		<% @user.followings.each do |following| %>
 			<tr>
-				<td><img src=<%= following.image %> class="index_icon_image"></td>
+				<td><%= image_tag following.image_id.url, class: "index_icon_image" %></td>
 				<td>
 					<%= link_to user_path(following.id) do %>
 						<%= following.name %>

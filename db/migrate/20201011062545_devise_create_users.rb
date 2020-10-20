@@ -9,8 +9,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
 
       #追加
       t.string :name
-      t.text :body
-      t.integer :image_id
+      t.string :body, default: "よろしくお願いします"
+      t.string :image_id
 
 
       ## Recoverable
