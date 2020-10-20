@@ -9,4 +9,13 @@ class Training < ApplicationRecord
 	validates :name, presence: true
 	validates :muscle_id, presence: true
 	validates :body, length: {maximum: 255}
+
+	validate :max_five_image
+
+	def max_five_image
+		if self.training_images.length > 6
+			errors.add(:training_images, "画像は最大5枚です")
+		end
+
+	end
 end

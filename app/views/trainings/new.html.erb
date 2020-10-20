@@ -1,34 +1,41 @@
-<h1>トレーニング投稿</h1>
+<h1 class="training_head">トレーニング投稿</h1>
 
 <%= form_for @training do |f| %>
-	<table>
-		<thead>
-			<tr>
-				<th></th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td><%= f.label :name, "メニュー名" %></td>
-				<td><%= f.text_field :name %></td>
-			</tr>
-			<tr>
-				<td><%= f.label :muscle_id, "部位" %></td>
-				<td><%= f.collection_select :muscle_id, Muscle.all, :id, :name, include_blank: "--選択してください--" %></td>
-			</tr>
-			<tr>
-				<td><%= f.label :body, "備考" %></td>
-				<td><%= f.text_area :body %></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td><%= f.attachment_field :training_images_images, multiple: true %></td>
-			</tr>
-		</tbody>
+	<div class="row">
+		<div class="col-md-2 offset-md-3">種目名</div>
+		<div class="col-md-4">
+			<%= f.text_field :name, class: "form-control" %>
+		</div>
+		<div class="offset-md-3"></div>
+	</div><br>
 
-	</table>
+	<div class="row">
+		<div class="col-md-2 offset-md-3">トレーニング部位</div>
+		<div class="col-md-4">
+			<%= f.collection_select :muscle_id, Muscle.all, :id, :name, include_blank: "--選択してください--" %>
+		</div>
+		<div class="offset-md-3"></div>
+	</div><br>
 
+	<div class="row">
+		<div class="col-md-2 offset-md-3">食事記録(5枚まで)</div>
+		<div class="col-md-4">
+			<%= f.attachment_field :training_images_images, multiple: true %>
+		</div>
+	</div><br>
+
+	<div class="row">
+		<div class="col-md-2 offset-md-3">備考</div>
+		<div class="col-md-4">
+			<%= f.text_area :body, class: "form-control" %>
+		</div>
+	</div><br>
 	<%= f.hidden_field :user_id, :value => current_user.id %>
-	<%= f.submit "登録" %>
+
+	<div class="row">
+		<div class="offset-md-5"></div>
+		<div class="col-md-4 text-right">
+			<%= f.submit "新規投稿", class: "btn btn-success" %>
+		</div>
+	</div>
 <% end %>
