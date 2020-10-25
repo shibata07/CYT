@@ -1,8 +1,9 @@
 <%= form_with model: [training, comment] do |f| %>
+	<div id="error_messages"><%= render 'layouts/error_messages', model: f.object %></div>
 	<div>
-    <%= f.text_field :content %>
+    <%= f.text_field :content, class: "form-control" %>
   	</div>
-  	<div>
-    	<%= f.submit "コメントをする" %>
+  	<div style="margin-top: 10px">
+    	<%= f.submit "コメントをする", class: "btn btn-primary" %>
   	</div>
 <% end %>

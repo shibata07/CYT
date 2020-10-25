@@ -1,6 +1,7 @@
-<h1 class="training_head">トレーニング編集</h1>
+<h1 class="text-center">トレーニング編集</h1>
 
 <%= form_for @training do |f| %>
+	<%= render 'layouts/error_messages', model: f.object %>
 	<div class="row">
 		<div class="col-md-2 offset-md-3">種目名</div>
 		<div class="col-md-4">

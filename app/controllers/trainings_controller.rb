@@ -1,4 +1,7 @@
 class TrainingsController < ApplicationController
+
+	before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+
 	def new
 		@training = Training.new
 	end
@@ -6,7 +9,7 @@ class TrainingsController < ApplicationController
 	def create
 		@training = Training.new(training_params)
 		if @training.save
-			redirect_to training_path(@training.id)
+			redirect_to training_path(@training.id), notice: 'Posted successfully'
 		else
 			render :new
 		end
@@ -19,7 +22,14 @@ class TrainingsController < ApplicationController
 	end
 
 	def index
-		@trainings = Training.all.order(created_at: "DESC")
+		if params[:sort] == 'mine'
+			@trainings = Training.where(user_id: current_user.id)
+		elsif params[:sort] == 'followings'
+			@trainings = Training.where(user_id: current_user.followings.pluck(:id))
+		else
+			@trainings = Training.all
+		end
+		@trainings = @trainings.order(created_at: "DESC").page(params[:page]).per(10)
 	end
 
 	def edit
@@ -35,7 +45,7 @@ class TrainingsController < ApplicationController
 	def update
 		@training = Training.find(params[:id])
 		if @training.update(training_params)
-			redirect_to training_path(@training)
+			redirect_to training_path(@training), notice: 'Editing was successful'
 		else
 			render :edit
 		end

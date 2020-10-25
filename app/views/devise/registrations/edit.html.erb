@@ -1,57 +1,78 @@
-<h2>Edit</h2>
-
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= render 'layouts/error_messages', model: f.object %>
+  
+  <div class="row">
+    <div class="col-md-2 offset-md-3">名前</div>
+    <div class="col-md-4">
+      <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
+    </div>
+    <div class="offset-md-3"></div>
+  </div><br>
 
-  <div class="field">
-    <%= f.label :名前 %>
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-  </div>
+  <div class="row">
+    <div class="col-md-2 offset-md-3">プロフィール画像</div>
+    <div class="col-md-4">
+      <%= f.file_field :image_id %>
+    </div>
+    <div class="offset-md-3"></div>
+  </div><br>
 
-  <div class="field">
-    <%= f.label :image_id %><br/>
-    <%= f.file_field :image_id %>
-  </div>
+  <div class="row">
+    <div class="col-md-2 offset-md-3">メールアドレス</div>
+    <div class="col-md-4">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+    </div>
+    <div class="offset-md-3"></div>
+  </div><br>
 
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :紹介文 %>
-    <%= f.text_area :body, autofocus: true, autocomplete: "body" %>
-  </div>
+  <div class="row">
+    <div class="col-md-2 offset-md-3">自己紹介コメント</div>
+    <div class="col-md-4">
+      <%= f.text_area :body, autofocus: true, autocomplete: "body", class: "form-control" %>
+    </div>
+    <div class="offset-md-3"></div>
+  </div><br>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :新たなパスワード %> <i>(変更時のみ記入)</i>
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
+  <div class="row">
+    <div class="col-md-2 offset-md-3">新たなパスワード<br>(変更時のみ記入)</div>
+    <div class="col-md-4">
+      <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+    </div>
+    <div class="offset-md-3"></div>
+  </div><br>
 
-  <div class="field">
-    <%= f.label :新たなパスワード確認用 %>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+  <div class="row">
+    <div class="col-md-2 offset-md-3">新たなパスワード<br>(確認用)</div>
+    <div class="col-md-4">
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+    </div>
+    <div class="offset-md-3"></div>
+  </div><br>
 
-  <div class="field">
-    <%= f.label :現在のパスワード %>
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
+  <div class="row">
+    <div class="col-md-2 offset-md-3">現在のパスワード</div>
+    <div class="col-md-4">
+      <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
+    </div>
+    <div class="offset-md-3"></div>
+  </div><br>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
+  <div class="row">
+    <div class="offset-md-5"></div>
+    <div class="col-md-4 text-right">
+      <%= link_to "戻る", user_path(current_user.id), class: "btn btn-secondary", style: "margin-right: 5px;" %><%= f.submit "更新する", class: "btn btn-success" %>
+    </div>
+    <div class="offset-md-3"></div>
+  </div><br>
 <% end %>
 
-<h3>アカウント削除</h3>
+<h3 class="text-center">~アカウント削除~</h3>
 
-<p>※一度削除したアカウントは元に戻せません <%= button_to "delete", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", user_path(current_user.id) %>
+<p class="text-center">※一度削除したアカウントは元に戻せません</p>
+<div class="text-center">
+  <%= button_to "アカウントを削除する", registration_path(resource_name), data: { confirm: "本当に削除しますか？" }, method: :delete, class: "btn btn-danger" %>
+</div>

@@ -1,28 +1,55 @@
-<h1>トレーニング詳細</h1>
 
-<%= image_tag @training.user.image_id.url, class: "icon_image" %>
-<p><%= link_to user_path(@training.user.id) do %><%= @training.user.name %><% end %>
-<p>種目: <%= @training.name %></p>
-<p>トレーニング部位: <%= @training.muscle.name %></p>
-<p>備考: <%= simple_format @training.body %></p>
+<div class="row">
+	<div class="col-md-4 offset-md-4">
+		<div class="text-center">
+			<div>
+				<%= image_tag @training.user.image_id.url, class: "icon_image" %>
+			</div>
+			<h2><%= link_to user_path(@training.user.id) do %><%= @training.user.name %><% end %></h2>
+			<p>種目: <%= @training.name %></p>
+			<p>トレーニング部位: <%= @training.muscle.name %></p>
 
-<% if @training.training_images.present? %>
-	<h3>食事の記録</h3>
-	<% @training.training_images.each do |image| %>
-		<%= attachment_image_tag image, :image, :fill, 160, 160 %>
-	<% end %>
-<% else %>
-<% end %>
-
-<% if @training.user.id == current_user.id %>
-	<%= link_to "編集", edit_training_path(@training.id) %>
-	<%= link_to "削除", training_path(@training.id), method: :delete, data: {confirm: "削除しますか？"} %>
-<% end %>
-
-<div>
-	<h2>コメント</h2>
-	<div id="comments_area">
-		<%= render partial: "comments/index", locals: {comments: @comments} %>
+			<p>備考</p>
+			<div class="comment_body">
+				<%= simple_format @training.body %>
+			</div>
+		</div>
 	</div>
-	<%= render partial: "comments/form", locals: {comment: @comment, training: @training} %>
 </div>
+
+		<div class="row">
+			<div class="col-md-8 offset-md-2 text-center">
+				<% if @training.training_images.present? %>
+					<h3>食事の記録</h3>
+					<% @training.training_images.each do |image| %>
+						<%= attachment_image_tag image, :image, :fill, 160, 160 %>
+					<% end %>
+				<% else %>
+				<h3>食事の記録</h3>
+				<p>画像はありません</p>
+				<% end %>
+			</div>
+		</div><br>
+
+		<div class="row">
+			<div class="col-md-4 offset-md-4 text-center">
+				<% if user_signed_in? == true %>
+					<% if @training.user.id == current_user.id %>
+						<%= link_to "編集", edit_training_path(@training.id), class: "btn btn-success" %>
+						<%= link_to "削除", training_path(@training.id), method: :delete, data: {confirm: "この投稿を削除しますか？"}, class: "btn btn-danger" %>
+					<% end %>
+				<% end  %>
+				<h2>コメント</h2>
+				<div id="comments_area">
+					<%= render partial: "comments/index", locals: {comments: @comments} %>
+				</div><br>
+				<% if user_signed_in? == true %>
+					<%= render partial: "comments/form", locals: {comment: @comment, training: @training} %>
+				<% end %>
+
+				<div style="margin-top: 15px;">
+					<%= link_to "戻る", trainings_path, class: "btn btn-secondary"%>
+				</div>
+			</div>
+		</div>
+

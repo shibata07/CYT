@@ -3,7 +3,13 @@
 <% end %>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+	<div class="row">
+		<div class="offset-5"></div>
+		<div class="col-md-4 text-right">
+  			<%= link_to "パスワードをお忘れの方", new_password_path(resource_name) %>
+  		</div>
+  		<div class="offset-md-3"></div>
+  	</div>
 <% end %>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
