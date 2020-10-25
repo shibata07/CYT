@@ -13,8 +13,8 @@ class Training < ApplicationRecord
 	validate :max_five_image
 
 	def max_five_image
-		if self.training_images.length > 6
-			errors.add(:training_images, "画像は最大5枚です")
+		if self.training_images.length > 5
+			errors.add(:training_images, "You cannot choose 6 images or more")
 		end
 
 	end
