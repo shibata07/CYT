@@ -2,13 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.icon_image{
-	width: 200px;
-	height: 200px;
-	border-radius: 50%;
-	object-fit: cover;
-}
-
 .index_icon_image{
 	width: 50px;
 	height: 50px;
@@ -16,3 +9,7 @@
 	object-fit: cover;
 }
 
+.profile_image{
+	text-align: center;
+	margin-bottom: 20px;
+}

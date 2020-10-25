@@ -1,11 +1,13 @@
 class CommentsController < ApplicationController
+
+  before_action :authenticate_user!
+
   def create
   	@training = Training.find(params[:training_id])
     @comment = @training.comments.build(comment_params)
     @comment.user_id = current_user.id
-    if @comment.save
-    	render :index
-    end
+    @comment.save
+    render :index
   end
 
   def destroy
