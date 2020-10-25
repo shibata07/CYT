@@ -1,0 +1,43 @@
+<div class="row">
+	<div class="col-md-4 offset-md-4">
+		<div class="profile_image">
+			<%= image_tag @user.image_id.url, class: "icon_image" %>
+		</div>
+		<h2 style="text-align: center;">
+			<%= @user.name %>
+		</h2>
+
+		<div class="comment_body">
+			<span class="text-center"><%= simple_format @user.body %></span>
+		</div>
+
+		<div class="text-center" style="margin-top: 5px;">
+			フォロー数: <%= link_to follows_user_path(@user.id) do %><%= @user.followings.count %><% end %>
+			フォロワー数: <%= link_to followers_user_path(@user.id) do %><%= @user.followers.count %><% end %>
+		</div>
+
+		<% if user_signed_in? == true %>
+			<% if current_user.id == @user.id %>
+				<div class="text-center" style="margin-top: 5px;">
+					<%= link_to "Edit", edit_user_registration_path, class: "btn btn-success" %>
+				</div>
+			<% end %>
+
+			<% if current_user.id != @user.id %>
+				<% if @user.followed_by?(current_user) %>
+					<div class="text-center" style="margin-top: 5px;">
+						<%= link_to "フォロー済み", user_relationships_path(@user.id), method: :delete, class: "btn btn-danger" %>
+					</div>
+				<% else %>
+					<div class="text-center" style="margin-top: 5px;">
+						<%= link_to "フォローする", user_relationships_path(@user.id), method: :post, class: "btn btn-info" %>
+					</div>
+				<% end %>
+			<% end %>
+		<% end %>
+		<div class="text-center" style="margin-top: 5px;">
+			<%= link_to "戻る", :back, class: "btn btn-secondary" %>
+		</div>
+	</div>
+	<div class="offset-md-4">
+</div>

@@ -1,0 +1,38 @@
+<h2 class="head_content">ログイン</h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
+
+  <div class="row">
+    <div class="col-md-2 offset-md-3">名前</div>
+    <div class="col-md-4">
+      <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
+    </div>
+    <div class="offset-md-3"></div>
+  </div><br>
+
+  <div class="row">
+    <div class="col-md-2 offset-md-3">パスワード</div>
+    <div class="col-md-4">
+      <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+    </div>
+    <div class="offset-md-3"></div>
+  </div><br>
+
+  <% if devise_mapping.rememberable? %>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="offset-md-5"></div>
+      <div class="col-md-4 text-right">
+        <%= f.submit "Log in", class: "btn btn-primary" %>
+      </div>
+      <div class="offset-md-3"></div>
+  </div>
+<% end %>
+
+

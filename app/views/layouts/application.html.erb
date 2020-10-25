@@ -7,9 +7,67 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&display=swap" rel="stylesheet">
   </head>
 
   <body>
-    <%= yield %>
+
+    <% if user_signed_in? %>
+      <header>
+        <span class="logo">CYT</span>
+        <nav>
+          <ul>
+            <li>
+              <div id="search_form">
+                <%= form_tag(users_search_path,method: :get) do %>
+                <%= text_field_tag :search %>
+                <%= submit_tag 'ユーザ検索' %>
+                <% end %>
+              </div>
+            </li>
+            <li>
+              <%= link_to "マイページ", user_path(current_user.id), class: "nav-link" %>
+            </li>
+            <li>
+              <%= link_to "投稿一覧", trainings_path, class: "nav-link" %>
+            </li>
+            <li>
+              <%= link_to "新規投稿", new_training_path, class: "nav-link" %>
+            </li>
+            <li>
+              <%= link_to "ログアウト", destroy_user_session_path,method: :delete, class: "nav-link" %>
+            </li>
+          </ul>
+        </nav>
+      </header>
+    <% else %>
+      <header>
+        <%= link_to "CYT", root_path, class: "logo" %>
+        <nav>
+          <ul>
+            <li>
+              <%= link_to "サイト紹介", home_about_path, class: "nav-link" %>
+            </li>
+            <li>
+              <%= link_to "投稿一覧", trainings_path, class: "nav-link" %>
+            </li>
+            <li>
+              <%= link_to "新規登録", new_user_registration_path, class: "nav-link" %>
+            </li>
+            <li>
+              <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
+            </li>
+          </ul>
+        </nav>
+      </header>
+    <% end %>
+
+    <div class="container-fluid">
+      <!-- 新規登録、ログイン時のメッセージ -->
+       <p class="text-center"><%= notice%></p>
+
+      <%= yield %>
+    </div>
+
   </body>
 </html>

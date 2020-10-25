@@ -1,0 +1,42 @@
+<h1 class="head_content">トレーニング投稿</h1>
+
+<%= form_for @training do |f| %>
+	<%= render 'layouts/error_messages', model: f.object %>
+	<div class="row">
+		<div class="col-md-2 offset-md-3">種目名</div>
+		<div class="col-md-4">
+			<%= f.text_field :name, class: "form-control" %>
+		</div>
+		<div class="offset-md-3"></div>
+	</div><br>
+
+	<div class="row">
+		<div class="col-md-2 offset-md-3">トレーニング部位</div>
+		<div class="col-md-4">
+			<%= f.collection_select :muscle_id, Muscle.all, :id, :name, include_blank: "--選択してください--" %>
+		</div>
+		<div class="offset-md-3"></div>
+	</div><br>
+
+	<div class="row">
+		<div class="col-md-2 offset-md-3">食事記録(5枚まで)</div>
+		<div class="col-md-4">
+			<%= f.attachment_field :training_images_images, multiple: true %>
+		</div>
+	</div><br>
+
+	<div class="row">
+		<div class="col-md-2 offset-md-3">備考</div>
+		<div class="col-md-4">
+			<%= f.text_area :body, class: "form-control" %>
+		</div>
+	</div><br>
+	<%= f.hidden_field :user_id, :value => current_user.id %>
+
+	<div class="row">
+		<div class="offset-md-5"></div>
+		<div class="col-md-4 text-right">
+			<%= f.submit "新規投稿", class: "btn btn-primary" %>
+		</div>
+	</div>
+<% end %>
