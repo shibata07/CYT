@@ -1,8 +1,10 @@
 <h3 class="head_content"><%= @user.name %>のフォロワー</h3>
-<div class="row">
-	<% if @user.followers.count == 0 %>
-		<p class="text-center">ユーザはいません</p>
-	<% else %>
+<% if @user.followers.count == 0 %>
+	<div class="text-center">
+		<p>ユーザはいません</p>
+	</div>
+<% else %>
+	<div class="row">
 		<div class="col-md-10 offset-md-1">
 			<table class="table">
 				<% @user.followers.each do |follower| %>
@@ -19,5 +21,5 @@
 				<% end %>
 			</table>
 		</div>
-	<% end %>
-</div>
+	</div>
+<% end %>
