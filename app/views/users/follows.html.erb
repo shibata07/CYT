@@ -1,10 +1,8 @@
 <h3 class="head_content"><%= @user.name %>のフォロー中ユーザ</h3>
-<% if @user.followings.count == 0 %>
-	<div class="text-center">
-		<p>ユーザはいません</p>
-	</div>
-<% else %>
-	<div class="row">
+<div class="row">
+	<% if @user.followings.count == 0 %>
+		<p class="text-center">ユーザはいません</p>
+	<% else %>
 		<div class="col-md-10 offset-md-1">
 			<table class="table">
 				<% @user.followings.each do |following| %>
@@ -21,5 +19,5 @@
 				<% end %>
 			</table>
 		</div>
-	</div>
-<% end %>
+	<% end %>
+</div>

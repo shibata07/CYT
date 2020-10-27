@@ -1,9 +1,7 @@
 <h2 class="head_content">ログイン</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="text-center" style="margin-bottom: 35px;" >
-    <%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
-  </div>
+  <%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
 
   <div class="row">
     <div class="col-md-2 offset-md-3">名前</div>
@@ -20,6 +18,13 @@
     </div>
     <div class="offset-md-3"></div>
   </div><br>
+
+  <% if devise_mapping.rememberable? %>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end %>
 
   <div class="row">
     <div class="offset-md-5"></div>
