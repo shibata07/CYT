@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
 
   validates :image_id, presence: true
-  validates :name, presence: true
+  validates :name, presence: true, length: {maximum:20}
   validates :body, presence: true, length: {maximum:255}
 
   has_many :trainings, dependent: :destroy, foreign_key: :user_id

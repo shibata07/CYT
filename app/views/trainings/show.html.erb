@@ -40,6 +40,11 @@
 					<% end %>
 				<% end  %>
 				<h2>コメント</h2>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6 offset-md-3">
 				<div id="comments_area">
 					<%= render partial: "comments/index", locals: {comments: @comments} %>
 				</div><br>
@@ -47,9 +52,8 @@
 					<%= render partial: "comments/form", locals: {comment: @comment, training: @training} %>
 				<% end %>
 
-				<div style="margin-top: 15px;">
+				<div class="text-center" style="margin-top: 15px;">
 					<%= link_to "一覧に戻る", trainings_path, class: "btn btn-secondary"%>
 				</div>
 			</div>
 		</div>
-
