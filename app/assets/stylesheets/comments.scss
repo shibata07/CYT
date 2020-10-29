@@ -2,10 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.comment_field{
-	border-bottom: solid 1px black;
-	width: 340px;
-	height: auto;
+.comment_table tr th{
+	border: none;
 }
 
 .comment_table tr td{
