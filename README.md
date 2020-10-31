@@ -2,6 +2,7 @@
 
 ## サイト概要
 トレーニング内容と食事の両方を記録し、ユーザ同士で進捗を共有するサイト
+サイト使用画像 https://www.pakutaso.com/
 
 ### サイトテーマ
 トレーニングsns
@@ -20,7 +21,8 @@
 休日の自宅やジム、隙間時間
 
 ## 設計書
-https://drive.google.com/file/d/1HIU_qPRsamWzhDl0Shd_NWCTrIeuizcr/view?usp=sharing
+テーブル定義書 https://docs.google.com/spreadsheets/d/1GqHNnImsEh9sKu8vnWMpSofNFD-xP-Be_1SvSzpReps/edit?usp=sharing
+ER図 https://drive.google.com/file/d/1HIU_qPRsamWzhDl0Shd_NWCTrIeuizcr/view?usp=sharing
 
 ### 機能一覧
 ユーザ機能
@@ -38,5 +40,4 @@ ajax
 - フレームワーク：Ruby on Rails
 - 仮想環境：EC2, RDS
 
-サイト使用画像 https://www.pakutaso.com/
 チャレンジ要素　https://docs.google.com/spreadsheets/d/1SCpZ2760sxtDXpLXDLoPSNZlrZBg2fJ3kjcvG9mK4Jc/edit?usp=sharing
