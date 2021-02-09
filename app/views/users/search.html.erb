@@ -3,10 +3,10 @@
 <% else %>
 
 	<h2 class="head_content"><%= @word %>検索結果: <%= @users.count %>人</h2>
-	<div class="col-md-10 offset-md-1">
+	<div class="search-container">
 		<% @users.each do |user| %>
 
-			<table class="table">
+			<table class="search-table">
 				<tr>
 					<td>
 						<%= image_tag user.image_id.url, class: "index_icon_image" %>
