@@ -17,3 +17,42 @@
 	background-color: transparent;
 	margin-bottom: 10px;
 }
+
+.training-container {
+	margin-top: 60px;
+}
+
+.training-show-btn {
+	width: 300px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.training-show-btn h2 {
+	margin-top: 10px;
+}
+
+.comment-container {
+	width: 850px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.comment_body{
+	border: solid 2px black;
+	border-radius: 3px;
+	min-height: 30px;
+	margin-bottom: 16px;
+}
+
+.comment_body p {
+	margin: 0;
+}
+
+.training-edit-container {
+	margin-top: 60px;
+}
+
+.training-edit-container h1 {
+	margin-bottom: 35px;
+}
