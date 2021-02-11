@@ -3,5 +3,5 @@ class Weight < ApplicationRecord
 
   validates :user_id, presence: true
   validates :when, presence: true, :uniqueness => {:scope => :user_id}
-  validates :value, presence: true
+  validates :value, presence: true, numericality: true
 end

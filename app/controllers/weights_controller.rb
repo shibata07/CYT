@@ -5,7 +5,7 @@ class WeightsController < ApplicationController
   def index
     @weight = Weight.new
 
-    @weights = Weight.all.where(user_id: current_user.id).order(:when).page(params[:page]).per(10)
+    @weights = Weight.all.where(user_id: current_user.id).order(:when).page(params[:page]).per(5)
 
     @weight_data = Weight.where(user_id: current_user.id).pluck(:value)
     gon.weight_data = Weight.where(user_id: current_user.id).order(:when).pluck(:value)
