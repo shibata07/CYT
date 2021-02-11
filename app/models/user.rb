@@ -21,6 +21,8 @@ class User < ApplicationRecord
   has_many :passive_relationships, class_name: "Relationship", foreign_key: :follower_id, dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :following
 
+  has_many :weights, dependent: :destroy, foreign_key: :user_id
+
   def followed_by?(user)
   	passive_relationships.find_by(following_id: user.id).present?
   end

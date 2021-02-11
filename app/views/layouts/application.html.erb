@@ -5,6 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= include_gon %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&display=swap" rel="stylesheet">
@@ -27,6 +28,9 @@
             </li>
             <li>
               <%= link_to "マイページ", user_path(current_user.id), class: "nav-link" %>
+            </li>
+            <li>
+              <%= link_to "体重管理", weights_path, class: "nav-link" %>
             </li>
             <li>
               <%= link_to "投稿一覧", trainings_path, class: "nav-link" %>
@@ -64,6 +68,7 @@
 
     <div class="container-fluid">
       <%= yield %>
+      
     </div>
 
   </body>
