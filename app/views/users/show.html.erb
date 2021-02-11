@@ -19,27 +19,26 @@
 
 			<% if user_signed_in? == true %>
 				<% if current_user.id == @user.id %>
-					<div class="text-center" style="margin-top: 5px;">
+					<div class="text-center" style="margin-top: 30px;">
 						<%= link_to "ユーザ編集", edit_user_registration_path, class: "btn btn-success" %>
 					</div>
 				<% end %>
 
 				<% if current_user.id != @user.id %>
 					<% if @user.followed_by?(current_user) %>
-						<div class="text-center" style="margin-top: 5px;">
+						<div class="text-center" style="margin-top: 30px;">
 							<%= link_to "フォロー済み", user_relationships_path(@user.id), method: :delete, class: "btn btn-danger" %>
 						</div>
 					<% else %>
-						<div class="text-center" style="margin-top: 5px;">
+						<div class="text-center" style="margin-top: 30px;">
 							<%= link_to "フォローする", user_relationships_path(@user.id), method: :post, class: "btn btn-info" %>
 						</div>
 					<% end %>
 				<% end %>
 			<% end %>
-			<div class="text-center" style="margin-top: 5px;">
+			<div class="text-center move_index">
 				<%= link_to "一覧へ移動", trainings_path, class: "btn btn-secondary" %>
 			</div>
 		</div>
-		<div class="offset-md-4">
 	</div>
 </div>

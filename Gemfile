@@ -75,3 +75,6 @@ group :production do
   gem 'mysql2'
 end
 
+gem 'chart-js-rails', '~> 0.1.4'
+gem 'gon'
+

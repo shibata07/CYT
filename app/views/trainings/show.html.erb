@@ -39,7 +39,7 @@
 		<% if user_signed_in? == true %>
 			<% if @training.user.id == current_user.id %>
 				<%= link_to "編集", edit_training_path(@training.id), class: "btn btn-success" %>
-				<%= link_to "削除", training_path(@training.id), method: :delete, data: {confirm: "この投稿を削除しますか？"}, class: "btn btn-danger" %>
+				<%= link_to "削除", training_path(@training.id), method: :delete, data: {confirm: "この投稿を削除しますか？"}, class: "btn btn-danger btn-sml" %>
 			<% end %>
 		<% end  %>
 		<h2>コメント</h2>
@@ -57,7 +57,7 @@
 		</div>
 	<% end %>
 
-	<div class="text-center" style="margin-top: 15px;">
+	<div class="text-center" style="margin-bottom: 15px; margin-top: 10px">
 		<%= link_to "一覧に戻る", trainings_path, class: "btn btn-secondary"%>
 	</div>
 </div>
