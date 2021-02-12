@@ -12,12 +12,12 @@
     <%= render 'layouts/error_messages', model: f.object %>
 
     <%= f.label :日付 %>
-    <%= f.date_select :when, class: 'form-control' %>日</label><br>
+    <%= f.date_select( :when, class: 'form-control', use_month_numbers:true,  date_separator:' / ') %><br>
 
     <%= f.label :体重 %>
-    <%= f.text_field :value %> kg<br>
+    <%= f.text_field :value %> kg
 
-    <%= f.submit "記録", class: "btn btn-primary" %>
+    <div><%= f.submit "記録", class: "btn btn-primary record" %></div>
 
     <%= f.hidden_field :user_id, :value => current_user.id %>
   <% end %>
@@ -35,6 +35,8 @@
       <% end %>
     </table>
   </div>
+<% else %>
+  <div class="back-btn"><%= link_to "戻る", weights_path, class: "btn btn-secondary" %></div>
 <% end %>
 
 <% if @weight_data.present? %>
@@ -45,8 +47,6 @@
   "use strict"
 
   {
-    // let date = gon.weight_when;
-    // let value = gon.weight_data;
 
     let chart = document.getElementById("chart");
     let ctx = chart.getContext("2d");
@@ -54,16 +54,37 @@
     let data = {
       labels: gon.weight_when,
       datasets: [{
-        label: "体重",
-        data: gon.weight_data
+        label: "あなたの体重",
+        data: gon.weight_data,
+        lineTension: 0
       }]
     };
-    let options;
+    let options = {
+      scales: {
+        yAxes: [{
+          ticks: {
+            suggestedMin: 30,
+            suggestedMax: 100,
+            stepSize: 10,
+            callback: function (value, index, values) {
+              return value + "kg";
+            }
+          }
+        }]
+      },
+      title: {
+        display: true,
+        text: "体重の遷移"
+      },
+      animation: {
+        duration: 0
+      }
+    };
 
     let myChart = new Chart(ctx, {
       type: type,
       data: data,
-      opitions: options
+      options: options
     });
   }
 
