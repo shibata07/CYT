@@ -8,7 +8,6 @@ class User < ApplicationRecord
   mount_uploader :image_id, ImageUploader
 
 
-  validates :image_id, presence: true
   validates :name, presence: true, length: {maximum:20}
   validates :body, presence: true, length: {maximum:255}
 

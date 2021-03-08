@@ -7,16 +7,16 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {   registrations: 'users/registrations',sessions: 'users/sessions' }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :users, only: [:show] do
-  	resource :relationships, only: [:create, :destroy]
+  resources :users, only: %i[show] do
+  	resource :relationships, only: %i[create destroy]
   	get :follows, on: :member
     get :followers, on: :member
   end
   resources :trainings do
-    resources :comments, only: [:create, :destroy]
+    resources :comments, only: %i[create destroy]
   end
 
-  resources :weights
+  resources :weights, only: %i[index create destroy]
 
 end
 
