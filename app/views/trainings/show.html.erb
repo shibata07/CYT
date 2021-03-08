@@ -1,62 +1,63 @@
+<div class="training-container">
+	<div class="row">
+		<div class="col-md-4 offset-md-4">
+			<div class="text-center">
+				<div>
+					<%= image_tag @training.user.image_id.url, class: "icon_image" %>
+				</div>
+				<h2><%= link_to user_path(@training.user.id) do %><%= @training.user.name %><% end %></h2>
+				<p>種目: <%= @training.name %></p>
+				<p>トレーニング部位: <%= @training.muscle.name %></p>
 
-<div class="row">
-	<div class="col-md-4 offset-md-4">
-		<div class="text-center">
-			<div>
-				<%= image_tag @training.user.image_id.url, class: "icon_image" %>
-			</div>
-			<h2><%= link_to user_path(@training.user.id) do %><%= @training.user.name %><% end %></h2>
-			<p>種目: <%= @training.name %></p>
-			<p>トレーニング部位: <%= @training.muscle.name %></p>
-
-			<p>備考</p>
-			<div class="comment_body">
-				<%= simple_format @training.body %>
+				<p>備考</p>
+				<div class="comment_body">
+					<% if @training.body.present? %>
+						<%= simple_format @training.body %>
+					<% else %>
+						<p>記載なし<p>
+					<% end %>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
 
-		<div class="row">
-			<div class="col-md-8 offset-md-2 text-center">
-				<% if @training.training_images.present? %>
-					<h3>食事の記録</h3>
-					<% @training.training_images.each do |image| %>
-						<%= attachment_image_tag image, :image, :fill, 160, 160 %>
-					<% end %>
-				<% else %>
+	<div class="row">
+		<div class="col-md-8 offset-md-2 text-center">
+			<% if @training.training_images.present? %>
 				<h3>食事の記録</h3>
-				<p>画像はありません</p>
+				<% @training.training_images.each do |image| %>
+					<%= attachment_image_tag image, :image, :fill, 160, 160 %>
 				<% end %>
-			</div>
-		</div><br>
-
-		<div class="row">
-			<div class="col-md-4 offset-md-4 text-center">
-				<% if user_signed_in? == true %>
-					<% if @training.user.id == current_user.id %>
-						<%= link_to "編集", edit_training_path(@training.id), class: "btn btn-success" %>
-						<%= link_to "削除", training_path(@training.id), method: :delete, data: {confirm: "この投稿を削除しますか？"}, class: "btn btn-danger" %>
-					<% end %>
-				<% end  %>
-				<h2>コメント</h2>
-			</div>
+			<% else %>
+			<h3>食事の記録</h3>
+			<p>画像はありません</p>
+			<% end %>
 		</div>
+	</div><br>
 
-		<div class="row">
-			<div class="col-md-6 offset-md-3">
-				<div id="comments_area">
-					<%= render partial: "comments/index", locals: {comments: @comments} %>
-				</div><br>
-			</div>
-		</div>
-
+	<div class="training-show-btn">
 		<% if user_signed_in? == true %>
-			<div class="col-md-4 offset-md-4">
-				<%= render partial: "comments/form", locals: {comment: @comment, training: @training} %>
-			</div>
-		<% end %>
+			<% if @training.user.id == current_user.id %>
+				<%= link_to "編集", edit_training_path(@training.id), class: "btn btn-success" %>
+				<%= link_to "削除", training_path(@training.id), method: :delete, data: {confirm: "この投稿を削除しますか？"}, class: "btn btn-danger btn-sml" %>
+			<% end %>
+		<% end  %>
+		<h2>コメント</h2>
+	</div>
 
-				<div class="text-center" style="margin-top: 15px;">
-					<%= link_to "一覧に戻る", trainings_path, class: "btn btn-secondary"%>
-				</div>
+	<div class="comment-container">
+		<div id="comments_area">
+			<%= render partial: "comments/index", locals: {comments: @comments} %>
+		</div><br>
+	</div>
+
+	<% if user_signed_in? == true %>
+		<div class="col-md-4 offset-md-4">
+			<%= render partial: "comments/form", locals: {comment: @comment, training: @training} %>
+		</div>
+	<% end %>
+
+	<div class="text-center" style="margin-bottom: 15px; margin-top: 10px">
+		<%= link_to "一覧に戻る", trainings_path, class: "btn btn-secondary"%>
+	</div>
+</div>

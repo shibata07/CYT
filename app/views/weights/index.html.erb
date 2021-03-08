@@ -1,0 +1,89 @@
+<% if @weight_data.present? %>
+  <div class="chart-area">
+    <canvas id="chart">
+    </canvas>
+  </div>
+<% else %>
+  <p class="notchart">体重の記録がありません</p>
+<% end %>
+
+<div class="weight-form">
+  <%= form_for(@weight) do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
+
+    <%= f.label :日付 %>
+    <%= f.date_select( :when, class: 'form-control', use_month_numbers:true,  date_separator:' / ') %><br>
+
+    <%= f.label :体重 %>
+    <%= f.text_field :value %> kg
+
+    <div><%= f.submit "記録", class: "btn btn-primary record" %></div>
+
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+  <% end %>
+</div>
+
+<% if @weight_data.present? %>
+  <div class="weight-table">
+    <table class="table">
+      <% @weights.each do |record| %>
+        <tr>
+          <td><%= record.when %></td>
+          <td><%= record.value %>kg</td>
+          <td><%= link_to "削除", weight_path(record.id), method: :delete, data: {confirm: 'この記録を削除しますか？'}, class: "btn btn-danger btn-sm" %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+<% end %>
+
+<% if @weight_data.present? %>
+  <div class="pagenate"><%= paginate @weights %></div>
+<% end %>
+
+<script>
+  "use strict";
+
+  {
+
+    let chart = document.getElementById("chart");
+    let ctx = chart.getContext("2d");
+    let type = "line";
+    let data = {
+      labels: gon.weight_when,
+      datasets: [{
+        label: "あなたの体重",
+        data: gon.weight_data,
+        lineTension: 0
+      }]
+    };
+    let options = {
+      scales: {
+        yAxes: [{
+          ticks: {
+            suggestedMin: 30,
+            suggestedMax: 100,
+            stepSize: 10,
+            callback: function (value, index, values) {
+              return value + "kg";
+            }
+          }
+        }]
+      },
+      title: {
+        display: true,
+        text: "体重の遷移"
+      },
+      animation: {
+        duration: 0
+      }
+    };
+
+    let myChart = new Chart(ctx, {
+      type: type,
+      data: data,
+      options: options
+    });
+  }
+
+</script>
