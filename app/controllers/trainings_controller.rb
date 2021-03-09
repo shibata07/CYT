@@ -1,6 +1,6 @@
 class TrainingsController < ApplicationController
 
-	before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+	before_action :authenticate_user!, only: %i[new create edit update destroy]
 
 	def new
 		@training = Training.new
