@@ -26,14 +26,14 @@
 ER図 https://drive.google.com/file/d/1HIU_qPRsamWzhDl0Shd_NWCTrIeuizcr/view?usp=sharing
 
 ### 機能一覧
-ユーザ機能
-画像アップロード
-トレーニング投稿
-フォロー
-ユーザ検索
-コメント(ajax)
-ページネーション(kaminari)
-体重グラフ
+- ユーザ機能
+- 画像アップロード
+- トレーニング投稿
+- フォロー
+- ユーザ検索
+- コメント(ajax)
+- ページネーション(kaminari)
+- 体重グラフ
 
 
 ## 開発環境
