@@ -33,11 +33,14 @@ ER図 https://drive.google.com/file/d/1HIU_qPRsamWzhDl0Shd_NWCTrIeuizcr/view?usp
 ユーザ検索
 コメント(ajax)
 ページネーション(kaminari)
+体重グラフ
+
 
 ## 開発環境
 - OS：Linux
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
+- テストフレームワーク : RSpec
 - 仮想環境：EC2, RDS
 
 チャレンジ要素　https://docs.google.com/spreadsheets/d/1SCpZ2760sxtDXpLXDLoPSNZlrZBg2fJ3kjcvG9mK4Jc/edit?usp=sharing
